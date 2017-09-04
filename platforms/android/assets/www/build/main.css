@@ -25214,3 +25214,7 @@ canvas-draw #bottom-toolbar {
   position: absolute;
   bottom: 0;
 }
+
+page-home .no-scroll .scroll-content {
+  overflow: hidden;
+}

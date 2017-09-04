@@ -1,7 +1,6 @@
 import { Polyline } from './../../app/model/polyline.model';
 import { Component, ViewChild, Renderer } from '@angular/core';
-import { AlertController } from 'ionic-angular';
-import { Platform } from 'ionic-angular';
+import { AlertController, Platform } from 'ionic-angular';
 import * as io from 'socket.io-client';
 
 @Component({
@@ -11,11 +10,13 @@ import * as io from 'socket.io-client';
 export class CanvasDraw {
 
   @ViewChild('myCanvas') canvas: any;
+  width: number;
+  height: number;
 
   canvasElement: any;
   lastX: number;
   lastY: number;
-  canDraw: boolean;
+  canDraw: boolean = true;
 
   socket:any
 
@@ -24,7 +25,7 @@ export class CanvasDraw {
   brushSize: number = 10;
   textSize: number = 35;
 
-  isDrawing: boolean;
+  isDrawing: boolean = false;
   tempPolyline: Polyline;
 
   history: Polyline[] = [];
@@ -38,14 +39,11 @@ export class CanvasDraw {
   actions = [];
   redoActions = [];
 
-  constructor(public platform: Platform, public renderer: Renderer, public alertCtrl: AlertController) {
-    // this.socket = io('http://192.168.1.103:3000');
-    // this.socket.on('syncDrawing', (hist) => {
-    //   this.draw(hist.p_x, hist.p_y, hist.c_x, hist.c_y, hist.b_s, hist.c_c);
-    // });
-    this.canDraw = true;
-    this.isDrawing = false;
+  isOnline = false;
 
+  constructor(public platform: Platform, public renderer: Renderer, public alertCtrl: AlertController) {
+    this.width = platform.width();
+    this.height = platform.height();
   }
 
   ngAfterViewInit(){
@@ -71,8 +69,10 @@ export class CanvasDraw {
         this.tempPolyline.points.push({x: this.lastX, y: this.lastY});
         this.isDrawing = true;
       }
-    // this.sendDrawing(this.lastX, this.lastY, currentX, currentY);
       this.draw(this.lastX, this.lastY, currentX, currentY, this.brushSize, this.currentColor);
+      if (this.isOnline){
+        this.sendDrawing(this.lastX, this.lastY, currentX, currentY);        
+      }
     }  
 
     this.lastX = currentX;
@@ -120,9 +120,19 @@ export class CanvasDraw {
     this.textHistoryIndex = 0;
   }
 
+  delete() {
+    this.socket.emit('delete', 'dd');
+    this.clearCanvas();
+  }
+
   sendDrawing(p_x, p_y, c_x, c_y){
-    var hist = {'p_x':p_x, "p_y":p_y, "c_x":c_x, "c_y":c_y, "b_s":this.brushSize, "c_c":this.currentColor};
+    let hist = {p_x :p_x/this.width, p_y: p_y/this.height, c_x: c_x/this.width, c_y: c_y/this.height, b_s: this.brushSize, c_c: this.currentColor};
     this.socket.emit('syncDrawing', JSON.stringify(hist));
+  }
+
+  sendWriting(text: string) {
+    let hist = {text: text, x: this.lastX/this.width, y: this.lastY/this.height, color: this.currentColor, font: this.textSize + "px Comic Sans MS"};
+    this.socket.emit('syncWriting', JSON.stringify(hist));    
   }
 
   onAddText() {
@@ -130,7 +140,6 @@ export class CanvasDraw {
     ctx.font = this.textSize + "px Comic Sans MS";
     ctx.fillStyle = this.currentColor;
 
-    let userText: string;
     let prompt = this.alertCtrl.create({
       title: 'Add Text',
       message: "Enter the text you want to add",
@@ -149,8 +158,10 @@ export class CanvasDraw {
         {
           text: 'Add',
           handler: data => {
-            userText = data.text;
-            ctx.fillText(userText, this.lastX, this.lastY);
+            if (this.isOnline) {
+              this.sendWriting(data.text);              
+            }
+            ctx.fillText(data.text, this.lastX, this.lastY);
             this.textHistory.push({text: data.text, x: this.lastX, y: this.lastY, color: this.currentColor, font: this.textSize + "px Comic Sans MS"});
             this.textHistoryIndex++;
             this.actions.push('write');            
@@ -294,6 +305,9 @@ export class CanvasDraw {
   }
 
   undo() {
+    if (this.isOnline){
+      return;
+    }
     if (this.actions.length == 0) {
       return;
     }
@@ -320,6 +334,9 @@ export class CanvasDraw {
   }
 
   redo() {
+    if (this.isOnline){
+      return;
+    }
     if (this.redoActions.length == 0){
       return;
     }
@@ -344,8 +361,8 @@ export class CanvasDraw {
     else {
       if (this.redoTextHistory.length > 0) {
         this.textHistory.push( this.redoTextHistory.pop() );
-        for (var i = this.textHistoryIndex; i<this.textHistory.length; i++) {
-          let writing = this.textHistory[i];
+        for (var j = this.textHistoryIndex; j<this.textHistory.length; j++) {
+          let writing = this.textHistory[j];
           let ctx = this.canvasElement.getContext('2d');
           ctx.font = writing.font;
           ctx.fillStyle = writing.color;
@@ -354,6 +371,30 @@ export class CanvasDraw {
         this.textHistoryIndex++;
       }
     }
+  }
+
+  sync() {
+    if (!this.isOnline){
+      this.clearCanvas();
+      this.socket = io('http://192.168.1.101:3000');
+      this.socket.on('syncDrawing', (hist) => {
+        this.draw(hist.p_x*this.width, hist.p_y*this.height, hist.c_x*this.width, hist.c_y*this.height, hist.b_s, hist.c_c);
+      });
+      this.socket.on('syncWriting', (hist) => {
+        let ctx = this.canvasElement.getContext('2d');
+        ctx.font = hist.font;
+        ctx.fillStyle = hist.color;
+        ctx.fillText(hist.text, hist.x*this.width, hist.y*this.height);
+      });
+      this.socket.on('delete', (data) => {
+        this.clearCanvas();
+      });
+      this.isOnline = true;
+    } else {
+      this.socket.disconnect();
+      this.isOnline = false;
+    }
+
   }
   
 }
