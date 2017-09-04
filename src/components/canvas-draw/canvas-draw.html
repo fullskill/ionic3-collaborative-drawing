@@ -1,0 +1,33 @@
+<ion-toolbar id="top-toolbar">
+    <ion-buttons left>
+        <button icon-only ion-button (click)="onEnableDraw()">
+            <ion-icon [style.color]="currentColor" name="brush"></ion-icon>
+        </button>
+        <button icon-only ion-button (click)="onAddText()">
+            <b [style.color]="currentColor">Text</b>
+        </button>
+        <button icon-only ion-button (click)="onDisableDraw()">
+            <ion-icon name="hand"></ion-icon>
+        </button>
+        <button icon-only ion-button (click)="onSelectColor()">
+            <ion-icon name="color-palette"></ion-icon>
+        </button>
+        <button icon-only ion-button (click)="onSelectSize()">
+            <b>Size</b>
+        </button>
+        <button icon-only ion-button (click)="undo()">
+            <b>Undo</b>
+        </button>
+        <button icon-only ion-button (click)="redo()">
+            <b>Redo</b>
+        </button>
+    </ion-buttons>
+</ion-toolbar>
+  
+ <canvas #myCanvas (touchstart)="handleStart($event)" (touchmove)="handleMove($event.touches[0].pageX, $event.touches[0].pageY)" (touchend)="touchStop()"></canvas>
+  
+ <ion-toolbar id="bottom-toolbar">
+    <ion-buttons left>
+        <button color="dark" ion-button icon-only (click)="clearCanvas()"><ion-icon name="trash"></ion-icon></button>
+    </ion-buttons>
+</ion-toolbar>
