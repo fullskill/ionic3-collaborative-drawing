@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 106:
+/***/ 115:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,11 +13,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 106;
+webpackEmptyAsyncContext.id = 115;
 
 /***/ }),
 
-/***/ 147:
+/***/ 156:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -30,17 +30,17 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 147;
+webpackEmptyAsyncContext.id = 156;
 
 /***/ }),
 
-/***/ 191:
+/***/ 199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -69,13 +69,13 @@ HomePage = __decorate([
 
 /***/ }),
 
-/***/ 192:
+/***/ 214:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(233);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -83,25 +83,29 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 211:
+/***/ 233:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_canvas_draw_canvas_draw__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(282);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_canvas_draw_canvas_draw__ = __webpack_require__(283);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_base64_to_gallery__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_android_permissions__ = __webpack_require__(201);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -134,7 +138,9 @@ AppModule = __decorate([
         providers: [
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] }
+            { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
+            __WEBPACK_IMPORTED_MODULE_8__ionic_native_base64_to_gallery__["a" /* Base64ToGallery */],
+            __WEBPACK_IMPORTED_MODULE_9__ionic_native_android_permissions__["a" /* AndroidPermissions */]
         ]
     })
 ], AppModule);
@@ -143,16 +149,16 @@ AppModule = __decorate([
 
 /***/ }),
 
-/***/ 260:
+/***/ 282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(199);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -189,14 +195,18 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 261:
+/***/ 283:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CanvasDraw; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_model_polyline_model__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_model_polyline_model__ = __webpack_require__(284);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_base64_to_gallery__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_android_permissions__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_socket_io_client__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_socket_io_client__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -210,15 +220,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var CanvasDraw = (function () {
-    function CanvasDraw(platform, renderer, alertCtrl) {
+    function CanvasDraw(platform, renderer, alertCtrl, base64ToGallery, toastCtrl, androidPermissions) {
+        var _this = this;
         this.platform = platform;
         this.renderer = renderer;
         this.alertCtrl = alertCtrl;
+        this.base64ToGallery = base64ToGallery;
+        this.toastCtrl = toastCtrl;
+        this.androidPermissions = androidPermissions;
+        this.canDraw = true;
         this.currentColor = 'black';
         this.currentSize = 'medium';
         this.brushSize = 10;
         this.textSize = 35;
+        this.isDrawing = false;
         this.history = [];
         this.redoHistiry = [];
         this.historyIndex = 0;
@@ -227,17 +246,19 @@ var CanvasDraw = (function () {
         this.textHistoryIndex = 0;
         this.actions = [];
         this.redoActions = [];
-        // this.socket = io('http://192.168.1.103:3000');
-        // this.socket.on('syncDrawing', (hist) => {
-        //   this.draw(hist.p_x, hist.p_y, hist.c_x, hist.c_y, hist.b_s, hist.c_c);
-        // });
-        this.canDraw = true;
-        this.isDrawing = false;
+        this.isOnline = false;
+        this.width = platform.width();
+        this.height = platform.height();
+        if (this.platform.is('android')) {
+            this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE).then(function (success) { return console.log('Permission granted'); }, function (err) { return _this.androidPermissions.requestPermission(_this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE); });
+            this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
+        }
     }
     CanvasDraw.prototype.ngAfterViewInit = function () {
         this.canvasElement = this.canvas.nativeElement;
         this.renderer.setElementAttribute(this.canvasElement, 'width', this.platform.width() + '');
         this.renderer.setElementAttribute(this.canvasElement, 'height', this.platform.height() + '');
+        this.clearCanvas();
     };
     CanvasDraw.prototype.handleStart = function (ev) {
         this.lastX = ev.touches[0].pageX;
@@ -253,11 +274,27 @@ var CanvasDraw = (function () {
                 this.tempPolyline.points.push({ x: this.lastX, y: this.lastY });
                 this.isDrawing = true;
             }
-            // this.sendDrawing(this.lastX, this.lastY, currentX, currentY);
             this.draw(this.lastX, this.lastY, currentX, currentY, this.brushSize, this.currentColor);
+            if (this.isOnline) {
+                this.sendDrawing(this.lastX, this.lastY, currentX, currentY);
+            }
         }
         this.lastX = currentX;
         this.lastY = currentY;
+    };
+    CanvasDraw.prototype.handleStop = function () {
+        if (this.isDrawing) {
+            this.history.push(this.tempPolyline);
+            this.isDrawing = false;
+            this.historyIndex++;
+            this.actions.push('draw');
+            this.redoActions = [];
+            this.redoHistiry = [];
+            this.redoTextHistory = [];
+        }
+        if (!this.canDraw) {
+            this.onAddText();
+        }
     };
     CanvasDraw.prototype.draw = function (p_x, p_y, c_x, c_y, b_s, c_c) {
         var ctx = this.canvasElement.getContext('2d');
@@ -290,6 +327,8 @@ var CanvasDraw = (function () {
     CanvasDraw.prototype.clearCanvas = function () {
         var ctx = this.canvasElement.getContext('2d');
         ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, this.canvasElement.width, this.canvasElement.height);
         this.history = [];
         this.redoHistiry = [];
         this.historyIndex = 0;
@@ -297,16 +336,25 @@ var CanvasDraw = (function () {
         this.redoHistiry = [];
         this.textHistoryIndex = 0;
     };
+    CanvasDraw.prototype.delete = function () {
+        if (this.isOnline) {
+            this.socket.emit('delete', 'dd');
+        }
+        this.clearCanvas();
+    };
     CanvasDraw.prototype.sendDrawing = function (p_x, p_y, c_x, c_y) {
-        var hist = { 'p_x': p_x, "p_y": p_y, "c_x": c_x, "c_y": c_y, "b_s": this.brushSize, "c_c": this.currentColor };
+        var hist = { p_x: p_x / this.width, p_y: p_y / this.height, c_x: c_x / this.width, c_y: c_y / this.height, b_s: this.brushSize, c_c: this.currentColor };
         this.socket.emit('syncDrawing', JSON.stringify(hist));
+    };
+    CanvasDraw.prototype.sendWriting = function (text) {
+        var hist = { text: text, x: this.lastX / this.width, y: this.lastY / this.height, color: this.currentColor, font: this.textSize + "px Comic Sans MS" };
+        this.socket.emit('syncWriting', JSON.stringify(hist));
     };
     CanvasDraw.prototype.onAddText = function () {
         var _this = this;
         var ctx = this.canvasElement.getContext('2d');
         ctx.font = this.textSize + "px Comic Sans MS";
         ctx.fillStyle = this.currentColor;
-        var userText;
         var prompt = this.alertCtrl.create({
             title: 'Add Text',
             message: "Enter the text you want to add",
@@ -325,8 +373,10 @@ var CanvasDraw = (function () {
                 {
                     text: 'Add',
                     handler: function (data) {
-                        userText = data.text;
-                        ctx.fillText(userText, _this.lastX, _this.lastY);
+                        if (_this.isOnline) {
+                            _this.sendWriting(data.text);
+                        }
+                        ctx.fillText(data.text, _this.lastX, _this.lastY);
                         _this.textHistory.push({ text: data.text, x: _this.lastX, y: _this.lastY, color: _this.currentColor, font: _this.textSize + "px Comic Sans MS" });
                         _this.textHistoryIndex++;
                         _this.actions.push('write');
@@ -422,17 +472,6 @@ var CanvasDraw = (function () {
         });
         alert.present();
     };
-    CanvasDraw.prototype.touchStop = function () {
-        if (this.isDrawing) {
-            this.history.push(this.tempPolyline);
-            this.isDrawing = false;
-            this.historyIndex++;
-            this.actions.push('draw');
-            this.redoActions = [];
-            this.redoHistiry = [];
-            this.redoTextHistory = [];
-        }
-    };
     CanvasDraw.prototype.drawAllHistory = function () {
         for (var _i = 0, _a = this.history; _i < _a.length; _i++) {
             var polyline = _a[_i];
@@ -456,6 +495,9 @@ var CanvasDraw = (function () {
         }
     };
     CanvasDraw.prototype.undo = function () {
+        if (this.isOnline) {
+            return;
+        }
         if (this.actions.length == 0) {
             return;
         }
@@ -475,10 +517,15 @@ var CanvasDraw = (function () {
         }
         var ctx = this.canvasElement.getContext('2d');
         ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, this.canvasElement.width, this.canvasElement.height);
         this.drawAllTextHistory();
         this.drawAllHistory();
     };
     CanvasDraw.prototype.redo = function () {
+        if (this.isOnline) {
+            return;
+        }
         if (this.redoActions.length == 0) {
             return;
         }
@@ -504,8 +551,8 @@ var CanvasDraw = (function () {
         else {
             if (this.redoTextHistory.length > 0) {
                 this.textHistory.push(this.redoTextHistory.pop());
-                for (var i = this.textHistoryIndex; i < this.textHistory.length; i++) {
-                    var writing = this.textHistory[i];
+                for (var j = this.textHistoryIndex; j < this.textHistory.length; j++) {
+                    var writing = this.textHistory[j];
                     var ctx = this.canvasElement.getContext('2d');
                     ctx.font = writing.font;
                     ctx.fillStyle = writing.color;
@@ -515,6 +562,51 @@ var CanvasDraw = (function () {
             }
         }
     };
+    CanvasDraw.prototype.sync = function () {
+        var _this = this;
+        if (!this.isOnline) {
+            this.clearCanvas();
+            this.socket = __WEBPACK_IMPORTED_MODULE_5_socket_io_client__('http://192.168.1.100:3000');
+            this.socket.on('syncDrawing', function (hist) {
+                _this.draw(hist.p_x * _this.width, hist.p_y * _this.height, hist.c_x * _this.width, hist.c_y * _this.height, hist.b_s, hist.c_c);
+            });
+            this.socket.on('syncWriting', function (hist) {
+                var ctx = _this.canvasElement.getContext('2d');
+                ctx.font = hist.font;
+                ctx.fillStyle = hist.color;
+                ctx.fillText(hist.text, hist.x * _this.width, hist.y * _this.height);
+            });
+            this.socket.on('delete', function (data) {
+                _this.clearCanvas();
+            });
+            this.isOnline = true;
+        }
+        else {
+            this.socket.disconnect();
+            this.isOnline = false;
+        }
+    };
+    CanvasDraw.prototype.saveToGallery = function () {
+        var _this = this;
+        var image = this.canvasElement.toDataURL();
+        var base64Data = image.replace(/data:image\/png;base64,/, "");
+        this.base64ToGallery.base64ToGallery(base64Data).then(function (res) {
+            console.log('Saved image to gallery ', res);
+            var toast = _this.toastCtrl.create({
+                message: 'Saved!',
+                duration: 2500,
+                position: 'top'
+            });
+            toast.present();
+        }, function (err) {
+            var toast = _this.toastCtrl.create({
+                message: 'Cannot Saved!!',
+                duration: 2500,
+                position: 'top'
+            });
+            toast.present();
+        });
+    };
     return CanvasDraw;
 }());
 __decorate([
@@ -523,16 +615,16 @@ __decorate([
 ], CanvasDraw.prototype, "canvas", void 0);
 CanvasDraw = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["n" /* Component */])({
-        selector: 'canvas-draw',template:/*ion-inline-start:"/Users/wcweng/Documents/Github/ionic3-collaborative-drawing/src/components/canvas-draw/canvas-draw.html"*/'<ion-toolbar id="top-toolbar">\n    <ion-buttons left>\n        <button icon-only ion-button (click)="onEnableDraw()">\n            <ion-icon [style.color]="currentColor" name="brush"></ion-icon>\n        </button>\n        <button icon-only ion-button (click)="onAddText()">\n            <b [style.color]="currentColor">Text</b>\n        </button>\n        <button icon-only ion-button (click)="onDisableDraw()">\n            <ion-icon name="hand"></ion-icon>\n        </button>\n        <button icon-only ion-button (click)="onSelectColor()">\n            <ion-icon name="color-palette"></ion-icon>\n        </button>\n        <button icon-only ion-button (click)="onSelectSize()">\n            <b>Size</b>\n        </button>\n        <button icon-only ion-button (click)="undo()">\n            <b>Undo</b>\n        </button>\n        <button icon-only ion-button (click)="redo()">\n            <b>Redo</b>\n        </button>\n    </ion-buttons>\n</ion-toolbar>\n  \n <canvas #myCanvas (touchstart)="handleStart($event)" (touchmove)="handleMove($event.touches[0].pageX, $event.touches[0].pageY)" (touchend)="touchStop()"></canvas>\n  \n <ion-toolbar id="bottom-toolbar">\n    <ion-buttons left>\n        <button color="dark" ion-button icon-only (click)="clearCanvas()"><ion-icon name="trash"></ion-icon></button>\n    </ion-buttons>\n</ion-toolbar>'/*ion-inline-end:"/Users/wcweng/Documents/Github/ionic3-collaborative-drawing/src/components/canvas-draw/canvas-draw.html"*/
+        selector: 'canvas-draw',template:/*ion-inline-start:"/Users/wcweng/Documents/Github/ionic3-collaborative-drawing/src/components/canvas-draw/canvas-draw.html"*/'<ion-toolbar id="top-toolbar">\n    <ion-buttons left>\n        <button icon-only ion-button (click)="onEnableDraw()">\n            <ion-icon [style.color]="canDraw? \'blue\' : \'black\'" name="brush"></ion-icon>\n        </button>\n        <button icon-only ion-button (click)="onDisableDraw()">\n            <ion-icon [style.color]="!canDraw? \'blue\' : \'black\'" name="text"></ion-icon>\n        </button>\n        <button icon-only ion-button (click)="onSelectColor()">\n            <ion-icon [style.color]="currentColor" name="color-palette"></ion-icon>\n        </button>\n        <button icon-only ion-button (click)="onSelectSize()">\n            <ion-icon [style.color]="\'black\'" name="settings"></ion-icon>\n        </button>\n        <button icon-only ion-button (click)="undo()">\n            <ion-icon [style.color]="\'blue\'" name="undo"></ion-icon>\n        </button>\n        <button icon-only ion-button (click)="redo()">\n            <ion-icon [style.color]="\'blue\'" name="redo"></ion-icon>\n        </button>\n    </ion-buttons>\n\n    <ion-buttons right>\n        <button icon-left ion-button (click)="sync()">\n            <ion-icon [style.color]="isOnline ? \'green\' : \'red\'" name="sync"></ion-icon>\n            <b>Sync</b>\n        </button>\n    </ion-buttons>\n</ion-toolbar>\n  \n <canvas #myCanvas (touchstart)="handleStart($event)" (touchmove)="handleMove($event.touches[0].pageX, $event.touches[0].pageY)" (touchend)="handleStop()"></canvas>\n  \n <ion-toolbar id="bottom-toolbar">\n    <ion-buttons left>\n        <button color="dark" ion-button icon-only (click)="delete()"><ion-icon name="trash"></ion-icon></button>\n    </ion-buttons>\n    <ion-buttons Right>\n        <button color="dark" ion-button icon-left (click)="saveToGallery()">\n            <ion-icon name="document"></ion-icon>\n            <b>Save</b>\n        </button>\n    </ion-buttons>\n</ion-toolbar>'/*ion-inline-end:"/Users/wcweng/Documents/Github/ionic3-collaborative-drawing/src/components/canvas-draw/canvas-draw.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Renderer */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_1__angular_core__["_0" /* Renderer */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_base64_to_gallery__["a" /* Base64ToGallery */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* ToastController */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_android_permissions__["a" /* AndroidPermissions */]])
 ], CanvasDraw);
 
 //# sourceMappingURL=canvas-draw.js.map
 
 /***/ }),
 
-/***/ 262:
+/***/ 284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -548,7 +640,14 @@ var Polyline = (function () {
 
 //# sourceMappingURL=polyline.model.js.map
 
+/***/ }),
+
+/***/ 305:
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
 /***/ })
 
-},[192]);
+},[214]);
 //# sourceMappingURL=main.js.map

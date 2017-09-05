@@ -7,6 +7,12 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-base64-to-gallery": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-android-permissions": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "io.ionic.starter"
         },

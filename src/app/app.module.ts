@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
 import { CanvasDraw } from '../components/canvas-draw/canvas-draw';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CanvasDraw } from '../components/canvas-draw/canvas-draw';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Base64ToGallery,
+    AndroidPermissions
   ]
 })
 export class AppModule {}

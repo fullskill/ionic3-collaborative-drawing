@@ -1,6 +1,9 @@
 import { Polyline } from './../../app/model/polyline.model';
 import { Component, ViewChild, Renderer } from '@angular/core';
 import { AlertController, Platform } from 'ionic-angular';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
+import { ToastController } from 'ionic-angular';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 import * as io from 'socket.io-client';
 
 @Component({
@@ -41,9 +44,19 @@ export class CanvasDraw {
 
   isOnline = false;
 
-  constructor(public platform: Platform, public renderer: Renderer, public alertCtrl: AlertController) {
+  constructor(public platform: Platform, public renderer: Renderer, public alertCtrl: AlertController, private base64ToGallery: Base64ToGallery, private toastCtrl: ToastController, private androidPermissions: AndroidPermissions) {
     this.width = platform.width();
     this.height = platform.height();
+
+    if (this.platform.is('android')){
+      this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE).then(
+        success => console.log('Permission granted'),
+        err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE)
+      );
+      
+      this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
+    }
+   
   }
 
   ngAfterViewInit(){
@@ -52,6 +65,7 @@ export class CanvasDraw {
 
     this.renderer.setElementAttribute(this.canvasElement, 'width', this.platform.width() + '');
     this.renderer.setElementAttribute(this.canvasElement, 'height', this.platform.height() + '');
+    this.clearCanvas();
   }
 
   handleStart(ev){    
@@ -77,6 +91,24 @@ export class CanvasDraw {
 
     this.lastX = currentX;
     this.lastY = currentY;
+  }
+
+  handleStop() {
+    if (this.isDrawing){
+      this.history.push(this.tempPolyline);
+      this.isDrawing = false;
+      this.historyIndex++;
+      this.actions.push('draw');
+
+      this.redoActions = [];
+      this.redoHistiry = [];
+      this.redoTextHistory = [];
+    }
+    
+    if (!this.canDraw) {
+      this.onAddText();
+    }
+
   }
 
   draw(p_x, p_y, c_x, c_y, b_s, c_c){
@@ -110,7 +142,9 @@ export class CanvasDraw {
 
   clearCanvas(){
     let ctx = this.canvasElement.getContext('2d');
-    ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);   
+    ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, this.canvasElement.width, this.canvasElement.height);
     this.history = [];
     this.redoHistiry = [];
     this.historyIndex = 0;
@@ -121,7 +155,9 @@ export class CanvasDraw {
   }
 
   delete() {
-    this.socket.emit('delete', 'dd');
+    if (this.isOnline){
+      this.socket.emit('delete', 'dd');
+    }
     this.clearCanvas();
   }
 
@@ -134,6 +170,7 @@ export class CanvasDraw {
     let hist = {text: text, x: this.lastX/this.width, y: this.lastY/this.height, color: this.currentColor, font: this.textSize + "px Comic Sans MS"};
     this.socket.emit('syncWriting', JSON.stringify(hist));    
   }
+
 
   onAddText() {
     let ctx = this.canvasElement.getContext('2d');
@@ -269,20 +306,6 @@ export class CanvasDraw {
 
   }
 
-  touchStop() {
-    if (this.isDrawing){
-      this.history.push(this.tempPolyline);
-      this.isDrawing = false;
-      this.historyIndex++;
-      this.actions.push('draw');
-
-      this.redoActions = [];
-      this.redoHistiry = [];
-      this.redoTextHistory = [];
-    }
-
-  }
-
   drawAllHistory() {
     for (let polyline of this.history) {
       let startX = polyline.points[0].x;
@@ -328,6 +351,8 @@ export class CanvasDraw {
 
     let ctx = this.canvasElement.getContext('2d');
     ctx.clearRect(0, 0, this.canvasElement.width, this.canvasElement.height);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, this.canvasElement.width, this.canvasElement.height);
     this.drawAllTextHistory();
     this.drawAllHistory();
     
@@ -376,7 +401,7 @@ export class CanvasDraw {
   sync() {
     if (!this.isOnline){
       this.clearCanvas();
-      this.socket = io('http://192.168.1.101:3000');
+      this.socket = io('http://192.168.1.100:3000');
       this.socket.on('syncDrawing', (hist) => {
         this.draw(hist.p_x*this.width, hist.p_y*this.height, hist.c_x*this.width, hist.c_y*this.height, hist.b_s, hist.c_c);
       });
@@ -394,7 +419,32 @@ export class CanvasDraw {
       this.socket.disconnect();
       this.isOnline = false;
     }
+  }
 
+  saveToGallery() {
+    
+    const image = this.canvasElement.toDataURL();
+    let base64Data = image.replace(/data:image\/png;base64,/, "");
+    this.base64ToGallery.base64ToGallery(base64Data).then(
+      (res) => {
+        console.log('Saved image to gallery ', res)
+        let toast = this.toastCtrl.create({
+          message: 'Saved!',
+          duration: 2500,
+          position: 'top'
+        });
+        toast.present();
+      },
+      (err) => {
+        let toast = this.toastCtrl.create({
+          message: 'Cannot Saved!!',
+          duration: 2500,
+          position: 'top'
+        });
+        toast.present();
+      }
+    );
+    
   }
   
 }

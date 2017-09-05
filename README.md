@@ -1,26 +1,35 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+## CoDraw
+A simple cross-platform drawing apps with collaborative drawing. Make use
+of [ionic3](http://ionicframework.com/docs/) and socket.io. The Android version can be find [here](https://github.com/wcweng68/collaborativeDrawing-Android)
 
-## How to use this template
+## Functionaliies
+1. Perform free drawing
+2. Insert text
+3. Change drawing/text color
+4. Change pen width/text size
+5. Undo & Redo
+6. Save to local storage
+7. Perform collaborative drawing
 
-*This template does not work on its own*. The shared files for each starter are found in the [ionic2-app-base repo](https://github.com/ionic-team/ionic2-app-base).
+## Getting Started
+### Client side
+To enable collaborative drawing, please go to
+"./src/components/canvas-draw/canvas-draw.ts" sync() to edit the server address (your IP address)
 
-To use this template, either create a new ionic project using the ionic node.js utility, or copy the files from this repository into the [Starter App Base](https://github.com/ionic-team/ionic2-app-base).
-
-### With the Ionic CLI:
-
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+With the Ionic CLI, execute one of the following command to launch the app according to the platform (broswer, ios, android)
 
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start myBlank blank
-```
-
-Then, to run it, cd into `myBlank` and run:
-
-```bash
-$ ionic cordova platform add ios
+$ ionic serve
 $ ionic cordova run ios
+$ ionic cordova run android
+```
+### Server side
+1. Download the node.js server [here](https://github.com/wcweng68/co-draw-nodejs-ionic3)
+
+2. Run the following command to start the server
+```bash
+$ node index
 ```
 
-Substitute ios for android if not on a Mac.
-
+## Screenshoot
+<img src="https://i.imgur.com/CE2AuBm.png " width="300" height="450" />
