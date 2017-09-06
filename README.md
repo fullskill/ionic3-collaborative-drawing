@@ -28,7 +28,7 @@ $ ionic cordova run android
 
 2. Run the following command to start the server
 ```bash
-$ node index
+$ node index.js
 ```
 
 ## Screenshoot
